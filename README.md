@@ -1,3 +1,5 @@
+[![build status](https://github.com/maietta/capitano/actions/workflows/release.yml/badge.svg)](https://github.com/maietta/capitano/actions/workflows/release.yml)
+
 # Capitano: Deploying SvelteKit Websites with Pocketbase in a Docker Container
 
 Capitano is a proof of concept created to address the need for deploying websites built with SvelteKit in SSR (Server-Side Rendering) mode while bundling a Pocketbase database and managing deployments within a single Docker container.
@@ -26,17 +28,15 @@ FROM node:18-alpine
 ENV ORIGIN=${ORIGIN}
 ENV NODE_ENV production
 
+ADD https://github.com/maietta/capitano/releases/download/untagged-f87df824ced0b3abdd36/capitano_1.0.1_linux_amd64 /usr/bin/capitano
+RUN chmod +x /app/capitano
+
 WORKDIR /app
-
-RUN apk update && apk add --no-cache curl
-
-RUN curl -LO https://github.com/maietta/capitano/releases/latest/download/capitano
-
-RUN chmod +x /usr/bin/capitano
 
 EXPOSE 80
 
-ENTRYPOINT ["/usr/bin/capitano"]
+ENTRYPOINT ["/app/capitano"]
+
 ```
 
 ## Setup Capitano and create admin account:
