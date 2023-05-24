@@ -36,7 +36,7 @@ RUN chmod +x /usr/bin/capitano
 
 EXPOSE 80
 
-ENTRYPOINT ["/usr/bin//capitano"]
+ENTRYPOINT ["/usr/bin/capitano"]
 ```
 
 ## Setup Capitano and create admin account:
@@ -135,3 +135,11 @@ You can now run this script in WSL as-is, or you can chmod +X the script and run
 You'll be prompted to specify your FQDN, i.e., https://yourdomain.com, your admin email and password. This will request and store a token which then can be used to publish your app in the future.
 
 Run the the script once again to publish your site.
+
+# Futher information:
+
+Capitano is very much a work in progress. It expects your website.tar file to include the build/, package.json and packages.json files. It will perform an `npm ci --omit dev` on the server side prior to deployments, so NPM is the tool of chocie at the moment.
+
+I will be making a number of changes to make customization possible, such as using yarn, or pnpm, specify the startup command and allow for red/green zero downtime deployments, rollbacks, etc.
+
+I also have plans enable provisioning of Docker Swarms, Kubernetes clusters using Capitano, but that will be in the Pro version that is paid. In the pro version, Automatic SSL's are provided.

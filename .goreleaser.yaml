@@ -48,18 +48,18 @@ release:
 archives:
   - id: archive_cgo
     builds: [build_cgo]
-    name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}_cgo'
-    format: zip
+    name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}_cgo'
+    format: binary
     files:
       - LICENSE*
       - CHANGELOG*
 
   - id: archive_noncgo
     builds: [build_noncgo]
-    format: zip
-    files:
-      - LICENSE*
-      - CHANGELOG*
+    format: binary
+    # files:
+    #   - LICENSE*
+    #   - CHANGELOG*
 
 checksum:
   name_template: 'checksums.txt'
