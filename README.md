@@ -69,7 +69,7 @@ export default {
 
 # Publish your app:
 
-Currently, you must use the `tar` and `curl` commands to publish your website. Future versions of Capitano will include a `capitano publish` command with some extra security to encrypt your password, prompt for password, etc.
+Currently, you must use the `tar` and `curl` commands to publish your website. Future versions of Capitano will include a `capitano publish` command with some extra security to encrypt your token, require a publishing password, etc.
 
 Create a publish.sh with the following contents.
 
