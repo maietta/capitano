@@ -21,15 +21,17 @@ import (
 	"github.com/pocketbase/pocketbase/core"
 
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
+
+	_ "capitano/capitano_migrations"
 )
 
 var pidOfNode int
 
 func main() {
 
-	os.Args = append(os.Args, "serve")
-	os.Args = append(os.Args, "--dir", "capitano_data")
-	os.Args = append(os.Args, "--http", "0.0.0.0:80")
+	//os.Args = append(os.Args, "serve")
+	os.Args = append(os.Args, "--dir", "data")
+	//os.Args = append(os.Args, "--http", "0.0.0.0:80")
 
 	log.SetOutput(os.Stdout)
 	log.SetFlags(log.LstdFlags | log.Lmicroseconds | log.Lshortfile)
@@ -54,7 +56,7 @@ func main() {
 	// Add the migrate command
 	migratecmd.MustRegister(app, app.RootCmd, &migratecmd.Options{
 		Automigrate: true,
-		Dir:         "capitano_migrations",
+		Dir:         "migrations",
 	})
 
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {

@@ -35,7 +35,7 @@ WORKDIR /app
 
 EXPOSE 80
 
-ENTRYPOINT ["/app/capitano"]
+ENTRYPOINT ["/app/capitano", "serve", "--http", "localhost:80"]
 
 ```
 
